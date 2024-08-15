@@ -1,6 +1,6 @@
 package jpabook.jpashop.service;
 
-import jpabook.jpashop.Repository.MemberRepository;
+import jpabook.jpashop.repository.MemberRepository;
 import jpabook.jpashop.domain.Member;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
@@ -56,5 +56,21 @@ public class MemberServiceTest {
 
         //then
         fail("이까지 내려오면 안됌");
+    }
+
+    @Test
+    public void 회원찾기() throws Exception{
+        //given
+
+        Member member1 = new Member();
+        member1.setName("kim");
+        memberService.join(member1);
+        //when
+
+        Member findMember = memberRepository.findOne(member1.getId());
+
+
+        //then
+        Assertions.assertThat(findMember.getId()).isEqualTo(3L);
     }
 }

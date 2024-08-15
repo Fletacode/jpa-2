@@ -3,10 +3,9 @@ package jpabook.jpashop.service;
 
 import jakarta.persistence.EntityManager;
 import jpabook.jpashop.NotEnoughStockExcetion;
-import jpabook.jpashop.Repository.OrderRepository;
+import jpabook.jpashop.repository.OrderRepository;
 import jpabook.jpashop.domain.Address;
 import jpabook.jpashop.domain.Item.Book;
-import jpabook.jpashop.domain.Item.Item;
 import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.domain.Order;
 import jpabook.jpashop.domain.OrderStatus;
@@ -46,7 +45,7 @@ public class OrderServiceTest {
         Order getOrder = orderRepository.findOne(orderId);
         Book getBook = em.find(Book.class, book.getId());
 
-        Assert.assertEquals("주문시 상태는 ORDER", OrderStatus.ORDER, getOrder.getOrderstatus());
+        Assert.assertEquals("주문시 상태는 ORDER", OrderStatus.ORDER, getOrder.getOrderStatus());
         Assert.assertEquals("주문시 아이템 종류수가 같아야한다",getOrder.getOrderItems().size(), 1);
         Assert.assertEquals("주문 가격은 가격 * 수량이다", getOrder.getTotalPrice(), 1000*2);
         Assert.assertEquals("주문 수량이 줄어야합니다.", 8,getBook.getStockQuantity());
@@ -78,7 +77,7 @@ public class OrderServiceTest {
 
         
         //then
-        Assert.assertEquals("주문 상태가 취소 상태여야합니다",getOrder2.getOrderstatus() , OrderStatus.CANCEL);
+        Assert.assertEquals("주문 상태가 취소 상태여야합니다",getOrder.getOrderStatus() , OrderStatus.CANCEL);
         Assert.assertEquals("주문 수량이 다시 차야합니다", 10,getBook.getStockQuantity());
 
     }

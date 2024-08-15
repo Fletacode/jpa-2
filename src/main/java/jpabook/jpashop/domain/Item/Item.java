@@ -1,14 +1,17 @@
 package jpabook.jpashop.domain.Item;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jpabook.jpashop.NotEnoughStockExcetion;
 import jpabook.jpashop.domain.Category;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.BatchSize;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@BatchSize(size = 10)
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "dtype")
@@ -25,6 +28,7 @@ public abstract class Item {
 
     private int price;
     private int stockQuantity;
+
 
     @ManyToMany(mappedBy = "items")
     private List<Category> categories = new ArrayList<>();

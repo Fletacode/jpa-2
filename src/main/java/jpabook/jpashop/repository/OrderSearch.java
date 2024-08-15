@@ -1,11 +1,9 @@
-package jpabook.jpashop.Repository;
+package jpabook.jpashop.repository;
 
 
 import jpabook.jpashop.domain.OrderStatus;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import org.springframework.stereotype.Repository;
 
 @Getter @Setter
 public class OrderSearch {

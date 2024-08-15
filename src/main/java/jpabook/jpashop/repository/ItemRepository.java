@@ -1,10 +1,9 @@
-package jpabook.jpashop.Repository;
+package jpabook.jpashop.repository;
 
 
 import jakarta.persistence.EntityManager;
 import jpabook.jpashop.domain.Item.Item;
 import lombok.RequiredArgsConstructor;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -30,6 +29,7 @@ public class ItemRepository {
         return em.createQuery("select i from Item i", Item.class)
                 .getResultList();
     }
+
 
 
 }

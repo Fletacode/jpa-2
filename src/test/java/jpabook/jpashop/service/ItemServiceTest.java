@@ -2,8 +2,7 @@ package jpabook.jpashop.service;
 
 
 import jakarta.persistence.EntityManager;
-import jpabook.jpashop.Repository.ItemRepository;
-import jpabook.jpashop.Repository.MemberRepository;
+import jpabook.jpashop.repository.ItemRepository;
 import jpabook.jpashop.domain.Item.Book;
 import jpabook.jpashop.domain.Item.Item;
 import org.junit.Assert;
